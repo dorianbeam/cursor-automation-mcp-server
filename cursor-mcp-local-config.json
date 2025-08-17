@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "cursor-automation-builder": {
+      "command": "python",
+      "args": ["-m", "app.mcp.mcp"],
+      "cwd": "C:\\Users\\dsber\\Code\\Cursor-Automation-System-Builder",
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

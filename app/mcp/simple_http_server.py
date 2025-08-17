@@ -1,16 +1,21 @@
 # app/mcp/simple_http_server.py
 """
-Simple HTTP wrapper for FastMCP server
-Compatible with various MCP versions
+HTTP/SSE wrapper for FastMCP server - Railway Compatible
+Supports both HTTP and Server-Sent Events (SSE) for Cursor MCP integration
 """
 
 import asyncio
 import json
 import uvicorn
+import os
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from .server import mcp
+from .mcp import register_all_tools
+
+# Ensure tools are registered
+register_all_tools(mcp)
 
 # Create FastAPI app
 app = FastAPI(
@@ -28,6 +33,61 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# SSE endpoint for Cursor MCP integration
+@app.get("/sse")
+async def sse_endpoint():
+    """Server-Sent Events endpoint for Cursor MCP integration"""
+    
+    async def generate_events():
+        # Initial connection event
+        yield f"data: {json.dumps({'type': 'init', 'message': 'MCP Server Connected'})}\n\n"
+        
+        # Send available tools
+        tools = []
+        try:
+            if hasattr(mcp, '_tools') and mcp._tools:
+                tools = [
+                    {
+                        "name": name,
+                        "description": getattr(tool, '__doc__', 'No description available'),
+                        "parameters": getattr(tool, '__annotations__', {})
+                    }
+                    for name, tool in mcp._tools.items()
+                ]
+            else:
+                # Fallback tool list
+                tools = [
+                    {"name": "build_automation_system", "description": "Build complete automation systems from descriptions"},
+                    {"name": "list_automation_templates", "description": "List available automation templates"},
+                    {"name": "build_from_template", "description": "Build systems using proven templates"},
+                    {"name": "start_learning_path", "description": "Start guided learning tutorials"},
+                    {"name": "meta_optimize_system", "description": "Optimize and analyze system performance"},
+                    {"name": "analyze_workspace", "description": "Analyze workspace for automation opportunities"},
+                    {"name": "list_templates", "description": "List all available templates"},
+                    {"name": "get_template_details", "description": "Get detailed template information"},
+                    {"name": "create_custom_template", "description": "Create custom templates"}
+                ]
+        except Exception as e:
+            yield f"data: {json.dumps({'type': 'error', 'message': f'Tools error: {str(e)}'})}\n\n"
+        
+        yield f"data: {json.dumps({'type': 'tools', 'tools': tools})}\n\n"
+        
+        # Keep connection alive
+        while True:
+            yield f"data: {json.dumps({'type': 'heartbeat', 'timestamp': asyncio.get_event_loop().time()})}\n\n"
+            await asyncio.sleep(30)  # Heartbeat every 30 seconds
+    
+    return StreamingResponse(
+        generate_events(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*"
+        }
+    )
+
 # Health check endpoint
 @app.get("/")
 async def root():
@@ -41,12 +101,16 @@ async def root():
     return {
         "message": "Cursor Automation System Builder MCP Server",
         "status": "running",
+        "version": "1.0.0",
         "mcp_endpoints": {
+            "sse": "/sse",
             "tools": "/mcp/tools",
-            "call": "/mcp/call"
+            "call": "/mcp/call",
+            "protocol": "/mcp"
         },
         "tools_available": len(tools),
-        "tools": tools
+        "tools": tools,
+        "railway_compatible": True
     }
 
 @app.get("/health")
@@ -186,9 +250,10 @@ async def mcp_protocol(request: Request):
         )
 
 if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))
     uvicorn.run(
         "app.mcp.simple_http_server:app",
         host="0.0.0.0",
-        port=8000,
-        reload=True
+        port=port,
+        reload=False  # Disable reload in production
     )
