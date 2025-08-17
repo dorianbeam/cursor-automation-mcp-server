@@ -1,5 +1,14 @@
 # 🏗️ Cursor Automation System Builder
 
+## ✅ **DEPLOYMENT STATUS: LIVE & FIXED** 
+
+🚀 **MCP Server:** https://cursor-automation-mcp-server-production.up.railway.app  
+🛠️ **Status:** 9 automation tools available and working  
+📁 **Project:** Organized and cleaned up  
+⚡ **Action:** **RESTART CURSOR** to load tools properly  
+
+---
+
 **A state-aware framework that builds intelligent automation systems collaboratively - with optional learning and persistent context across all chat sessions.**
 
 ## 🎯 What This System Does
