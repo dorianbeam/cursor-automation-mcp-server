@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "n8n-mcp": {
+      "command": "npx",
+      "args": [
+        "n8n-mcp"
+      ],
+      "env": {
+        "MCP_MODE": "stdio",
+        "LOG_LEVEL": "error",
+        "DISABLE_CONSOLE_OUTPUT": "true",
+        "N8N_API_URL": "https://beamai.app.n8n.cloud/",
+        "N8N_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4MDczNGFjNS05MTU5LTQwYmItYjZmOS1mODJmMWEyNTI4NzQiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzUyNTgwNjA3LCJleHAiOjE3NTUxMjI0MDB9.YAtg52VnR0mjylOHRObrFf1t5rf_NNmoXpxdpOrzOcI"
+      }
+    },
+    "linear": {
+      "url": "https://mcp.linear.app/sse"
+    },
+    "airtable": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "airtable-mcp-server"
+      ],
+      "env": {
+        "AIRTABLE_API_KEY": "patJS9Hojd6kd1SGM.2ff1fc95bb3dd96fac2ad5f191514500c15c48488817843da3055c04aec4dc81"
+      }
+    },
+    "vercel": {
+      "url": "https://mcp.vercel.com",
+      "headers": {}
+    },
+    "cursor-automation-builder": {
+      "command": "python",
+      "args": [
+        "-m", "app.mcp.mcp"
+      ],
+      "cwd": "C:\\Users\\dsber\\Code\\Cursor-Automation-System-Builder",
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

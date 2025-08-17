@@ -1,0 +1,108 @@
+{
+  "workflow_preferences": {
+    "preferred_execution_style": "autonomous",
+    "progress_detail_level": "medium",
+    "error_handling_preference": "proactive",
+    "communication_style": "technical"
+  },
+  "domain_patterns": {
+    "data_processing": {
+      "common_workflows": [
+        "csv_analysis",
+        "report_generation",
+        "data_validation"
+      ],
+      "preferred_tools": [
+        "pandas",
+        "matplotlib",
+        "excel_export"
+      ],
+      "success_indicators": [
+        "processing_speed",
+        "error_free_execution",
+        "format_compliance"
+      ],
+      "optimization_preferences": [
+        "parallel_processing",
+        "memory_efficiency",
+        "progress_visibility"
+      ]
+    },
+    "api_integration": {
+      "common_workflows": [
+        "data_sync",
+        "endpoint_validation",
+        "batch_processing"
+      ],
+      "preferred_tools": [
+        "rest_client",
+        "rate_limiter",
+        "error_handler"
+      ],
+      "success_indicators": [
+        "sync_accuracy",
+        "error_recovery",
+        "performance_stability"
+      ],
+      "optimization_preferences": [
+        "retry_strategies",
+        "batch_optimization",
+        "concurrent_requests"
+      ]
+    },
+    "development_workflows": {
+      "common_workflows": [
+        "code_generation",
+        "testing_automation",
+        "deployment_pipeline"
+      ],
+      "preferred_tools": [
+        "code_templates",
+        "test_frameworks",
+        "ci_cd_tools"
+      ],
+      "success_indicators": [
+        "code_quality",
+        "test_coverage",
+        "deployment_success"
+      ],
+      "optimization_preferences": [
+        "template_reuse",
+        "automated_testing",
+        "fast_feedback"
+      ]
+    }
+  },
+  "context_switching": {
+    "frequent_combinations": [
+      ["data_processing", "api_integration"],
+      ["development_workflows", "testing"]
+    ],
+    "transition_patterns": [
+      {
+        "from": "data_processing",
+        "to": "api_integration",
+        "probability": 0.7,
+        "trigger_indicators": ["external_data", "sync_required"]
+      }
+    ],
+    "prediction_accuracy": 0.0
+  },
+  "learning_rate": {
+    "pattern_adaptation": "fast",
+    "error_prevention": "high_priority",
+    "workflow_optimization": "continuous"
+  },
+  "feedback_patterns": {
+    "positive_indicators": [
+      "time_savings",
+      "error_reduction",
+      "workflow_completion"
+    ],
+    "improvement_areas": [
+      "communication_clarity",
+      "progress_transparency",
+      "customization_options"
+    ]
+  }
+}

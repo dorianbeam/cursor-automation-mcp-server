@@ -1,0 +1,154 @@
+{
+  "error_patterns": {
+    "data_validation": {
+      "common_causes": [
+        "invalid_file_format",
+        "missing_required_columns",
+        "data_type_mismatch",
+        "encoding_issues"
+      ],
+      "prevention_strategies": [
+        "pre_validate_file_headers",
+        "check_encoding_before_load",
+        "validate_data_types_early",
+        "provide_format_suggestions"
+      ],
+      "success_rate": 0.0,
+      "detection_patterns": [
+        "file_extension_mismatch",
+        "header_inconsistency",
+        "character_encoding_errors"
+      ]
+    },
+    "api_integration": {
+      "common_causes": [
+        "rate_limit_exceeded",
+        "authentication_failure",
+        "network_timeout",
+        "invalid_payload_format"
+      ],
+      "prevention_strategies": [
+        "implement_rate_limiting",
+        "validate_auth_before_requests",
+        "set_appropriate_timeouts",
+        "validate_payload_schema"
+      ],
+      "success_rate": 0.0,
+      "detection_patterns": [
+        "429_status_responses",
+        "401_authentication_errors",
+        "connection_timeout_patterns"
+      ]
+    },
+    "file_processing": {
+      "common_causes": [
+        "insufficient_memory",
+        "file_access_permissions",
+        "corrupted_file_data",
+        "unsupported_format"
+      ],
+      "prevention_strategies": [
+        "check_available_memory",
+        "verify_file_permissions",
+        "validate_file_integrity",
+        "check_format_support"
+      ],
+      "success_rate": 0.0,
+      "detection_patterns": [
+        "memory_usage_spikes",
+        "permission_denied_errors",
+        "file_corruption_signatures"
+      ]
+    },
+    "workflow_execution": {
+      "common_causes": [
+        "missing_dependencies",
+        "configuration_errors",
+        "resource_conflicts",
+        "timing_issues"
+      ],
+      "prevention_strategies": [
+        "validate_dependencies_first",
+        "check_configuration_completeness",
+        "prevent_resource_conflicts",
+        "implement_proper_sequencing"
+      ],
+      "success_rate": 0.0,
+      "detection_patterns": [
+        "import_error_messages",
+        "config_validation_failures",
+        "resource_lock_conflicts"
+      ]
+    }
+  },
+  "prevention_rules": {
+    "pre_execution_checks": [
+      {
+        "category": "data_validation",
+        "check": "validate_file_format",
+        "priority": "high",
+        "implementation": "check_headers_and_encoding"
+      },
+      {
+        "category": "api_integration", 
+        "check": "verify_connectivity",
+        "priority": "high",
+        "implementation": "ping_endpoint_with_auth"
+      },
+      {
+        "category": "file_processing",
+        "check": "memory_availability",
+        "priority": "medium",
+        "implementation": "estimate_memory_needs"
+      }
+    ],
+    "validation_patterns": [
+      {
+        "pattern": "schema_validation",
+        "applies_to": ["data_files", "api_payloads"],
+        "validation_steps": [
+          "check_required_fields",
+          "validate_data_types",
+          "verify_constraints"
+        ]
+      }
+    ],
+    "recovery_strategies": [
+      {
+        "error_type": "network_failure",
+        "strategy": "exponential_backoff_retry",
+        "max_attempts": 3,
+        "success_indicators": ["successful_response", "data_consistency"]
+      },
+      {
+        "error_type": "data_corruption",
+        "strategy": "fallback_to_backup",
+        "validation_required": true,
+        "success_indicators": ["data_integrity_check"]
+      }
+    ]
+  },
+  "learning_data": {
+    "false_positives": 0,
+    "successful_preventions": 0,
+    "missed_errors": 0,
+    "accuracy_rate": 0.0,
+    "improvement_tracking": {
+      "weekly_accuracy": [],
+      "prevention_effectiveness": [],
+      "user_satisfaction_with_prevention": []
+    }
+  },
+  "adaptive_learning": {
+    "pattern_evolution": {
+      "new_error_types_discovered": [],
+      "obsolete_patterns_removed": [],
+      "accuracy_improvements": []
+    },
+    "user_feedback_integration": {
+      "prevention_too_aggressive": 0,
+      "prevention_missed_issues": 0,
+      "prevention_helpful": 0
+    }
+  }
+}

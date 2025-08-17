@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# Output directories
+output/
+temp/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude artifacts (keep some for documentation)
+.claude/artifacts/
+.cursor/chat/
+
+# Keep important configuration files
+!.cursor/rules/

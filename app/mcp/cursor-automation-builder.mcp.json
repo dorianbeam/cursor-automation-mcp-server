@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "cursor-automation-builder": {
+      "command": "python", 
+      "args": [
+        "-m", "app.mcp.mcp"
+      ],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

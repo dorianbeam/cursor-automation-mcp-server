@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: cursor-automation-mcp-server
+    env: python
+    plan: free
+    buildCommand: "pip install -r mcp_requirements.txt"
+    startCommand: "python -m app.mcp.simple_http_server"
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: PYTHONPATH
+        value: .
+    scaling:
+      minInstances: 1
+      maxInstances: 1

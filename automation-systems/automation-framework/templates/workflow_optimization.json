@@ -1,0 +1,119 @@
+{
+  "workflows": {
+    "data_analysis": {
+      "execution_count": 0,
+      "average_duration": 0.0,
+      "success_rate": 0.0,
+      "optimization_history": [],
+      "parallel_execution_patterns": [
+        "load_data",
+        "validate_schema",
+        "generate_statistics"
+      ],
+      "context_loading_order": [
+        "data_processing_rules",
+        "error_prevention",
+        "output_templates"
+      ]
+    },
+    "report_generation": {
+      "execution_count": 0,
+      "average_duration": 0.0,
+      "success_rate": 0.0,
+      "optimization_history": [],
+      "parallel_execution_patterns": [
+        "load_templates",
+        "process_data",
+        "generate_visualizations"
+      ],
+      "context_loading_order": [
+        "report_templates",
+        "formatting_rules",
+        "visualization_configs"
+      ]
+    },
+    "api_integration": {
+      "execution_count": 0,
+      "average_duration": 0.0,
+      "success_rate": 0.0,
+      "optimization_history": [],
+      "parallel_execution_patterns": [
+        "validate_endpoints",
+        "check_rate_limits",
+        "prepare_payloads"
+      ],
+      "context_loading_order": [
+        "api_schemas",
+        "authentication_config",
+        "error_handling"
+      ]
+    },
+    "file_processing": {
+      "execution_count": 0,
+      "average_duration": 0.0,
+      "success_rate": 0.0,
+      "optimization_history": [],
+      "parallel_execution_patterns": [
+        "file_validation",
+        "format_detection",
+        "streaming_setup"
+      ],
+      "context_loading_order": [
+        "file_type_rules",
+        "processing_templates",
+        "output_formatters"
+      ]
+    }
+  },
+  "parallel_processing": {
+    "optimal_context_combinations": [
+      {
+        "primary": "data_processing_rules",
+        "secondary": ["error_prevention", "output_templates"],
+        "performance_gain": 0.0
+      }
+    ],
+    "loading_time_improvements": {
+      "sequential_baseline": 0.0,
+      "parallel_optimized": 0.0,
+      "improvement_percentage": 0.0
+    },
+    "concurrent_execution_limits": 5
+  },
+  "performance_metrics": {
+    "baseline_times": {
+      "data_analysis": 0.0,
+      "report_generation": 0.0,
+      "api_integration": 0.0,
+      "file_processing": 0.0
+    },
+    "improvement_rates": {
+      "speed_optimization": 0.0,
+      "error_reduction": 0.0,
+      "user_satisfaction": 0.0
+    },
+    "efficiency_scores": {
+      "context_loading": 0.0,
+      "workflow_execution": 0.0,
+      "resource_utilization": 0.0
+    }
+  },
+  "optimization_strategies": {
+    "learned_patterns": [
+      {
+        "pattern": "large_file_processing",
+        "strategy": "streaming_approach",
+        "conditions": "file_size > 10MB",
+        "success_rate": 0.0
+      }
+    ],
+    "adaptive_rules": [
+      {
+        "rule": "parallel_context_loading",
+        "trigger": "workflow_complexity > 3",
+        "implementation": "load_top_3_contexts_parallel",
+        "effectiveness": 0.0
+      }
+    ]
+  }
+}

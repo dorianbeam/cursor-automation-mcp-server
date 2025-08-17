@@ -1,0 +1,251 @@
+---
+description: Clean project architecture enforcement **ALWAYS ACTIVE:** prevents root clutter, enforces subsystem structure, organizes automation files
+alwaysApply: true
+---
+
+# 🏗️ Project Organization & Subsystem Structure Rules
+
+**PURPOSE:** Define how to organize automation systems within the main project structure to maintain clean architecture and scalability.
+
+**ALWAYS APPLIED:** This rule automatically enforces proper project structure, prevents root directory clutter, and ensures consistent subsystem organization for all automation builds.
+
+## 🎯 Core Organization Principles
+
+### **1. Subsystem Isolation**
+- Each automation system goes in its own dedicated folder
+- No automation files in root directory
+- Clear separation of concerns
+- Independent dependencies per subsystem
+
+### **2. Consistent Structure**
+```
+project-root/
+├── .cursor/rules/          # System-wide rules
+├── automation-systems/     # All automation subsystems
+│   ├── interview-analysis/ # Specific automation system
+│   │   ├── src/           # Source code
+│   │   ├── config/        # Configuration files
+│   │   ├── docs/          # Documentation
+│   │   ├── tests/         # Test files
+│   │   ├── examples/      # Sample data/demos
+│   │   └── requirements.txt
+│   ├── data-processing/   # Another automation system
+│   └── web-automation/    # Another automation system
+├── shared/                # Shared utilities across systems
+├── templates/             # System templates
+└── README.md             # Main project overview
+```
+
+### **3. Naming Conventions**
+- **Directories**: kebab-case (e.g., `interview-analysis`, `data-processing`)
+- **Files**: snake_case for Python (e.g., `transcript_analyzer.py`)
+- **Configs**: lowercase with extensions (e.g., `config.json`, `requirements.txt`)
+
+## 📁 Subsystem Structure Template
+
+### **Standard Subsystem Layout**
+```
+{subsystem-name}/
+├── README.md              # Subsystem overview & quick start
+├── requirements.txt       # Dependencies specific to this system
+├── config.json           # Configuration settings
+├── quick_start.py        # Interactive setup & demo
+├── src/                  # Source code directory
+│   ├── __init__.py
+│   ├── main.py          # Main automation script
+│   ├── core/            # Core functionality modules
+│   ├── utils/           # Utility functions
+│   └── models/          # Data models/classes
+├── docs/                 # Detailed documentation
+│   ├── user-guide.md    # Comprehensive usage guide
+│   ├── api-reference.md # API documentation
+│   └── examples.md      # Usage examples
+├── tests/               # Test suite
+│   ├── __init__.py
+│   ├── test_main.py
+│   └── fixtures/        # Test data
+├── examples/            # Sample data & demonstrations
+│   ├── sample-data/
+│   └── output-examples/
+└── output/              # Generated outputs (gitignored)
+```
+
+## 🚀 Implementation Guidelines
+
+### **When Building New Automation Systems**
+
+#### **STEP 1: Create Subsystem Directory**
+```bash
+mkdir automation-systems/{system-name}
+cd automation-systems/{system-name}
+```
+
+#### **STEP 2: Initialize Structure**
+```python
+# Use this template for quick subsystem creation
+SUBSYSTEM_STRUCTURE = {
+    "src/": {"__init__.py": "", "main.py": "# Main automation script"},
+    "docs/": {"README.md": "# System documentation"},
+    "tests/": {"__init__.py": "", "test_main.py": "# Tests"},
+    "examples/": {"sample-data/": {}},
+    "config.json": "# Configuration",
+    "requirements.txt": "# Dependencies",
+    "README.md": "# Quick start guide"
+}
+```
+
+#### **STEP 3: Implement Core System**
+1. Build main automation logic in `src/main.py`
+2. Add supporting modules in `src/core/`
+3. Create comprehensive `README.md`
+4. Add `quick_start.py` for easy onboarding
+
+### **Shared Components Strategy**
+
+#### **Common Utilities** (`shared/`)
+```
+shared/
+├── validators/           # Common validation utilities
+├── file_processors/     # File handling utilities  
+├── report_generators/   # Report generation tools
+├── error_handlers/      # Error handling patterns
+└── performance_utils/   # Performance optimization tools
+```
+
+#### **System Templates** (`templates/`)
+```
+templates/
+├── automation-template/ # Boilerplate automation system
+├── python-cli/         # CLI application template
+├── web-scraper/        # Web automation template
+└── data-processor/     # Data processing template
+```
+
+## 🎯 Development Workflow
+
+### **Creating New Automation Systems**
+
+#### **Option 1: From Scratch**
+```python
+# Build system following the standard structure
+# Use automation-systems/{name}/ as base directory
+# Implement all components within subsystem
+```
+
+#### **Option 2: From Template**
+```python
+# Copy template structure
+# Customize for specific automation needs
+# Maintain consistent organization
+```
+
+### **Integration with Main System**
+
+#### **Discovery Mechanism**
+```python
+# Main system can auto-discover subsystems
+AUTOMATION_SYSTEMS = {
+    "interview-analysis": "automation-systems/interview-analysis/",
+    "data-processing": "automation-systems/data-processing/",
+    # Auto-populated by scanning automation-systems/
+}
+```
+
+#### **Unified Interface**
+```python
+# Main builder can route to appropriate subsystem
+def build_automation(system_type, requirements):
+    if system_type == "interview-analysis":
+        return import_and_run("automation-systems/interview-analysis/src/main.py")
+    # Route to appropriate subsystem
+```
+
+## 🔧 Best Practices
+
+### **Dependencies**
+- Each subsystem has its own `requirements.txt`
+- Shared dependencies go in root `requirements.txt`
+- Use virtual environments per subsystem if needed
+
+### **Configuration**
+- System-specific configs in subsystem `config.json`
+- Global settings in root configuration
+- Environment-specific overrides supported
+
+### **Documentation**
+- Each subsystem is self-documenting
+- Main README.md links to all subsystems
+- Consistent documentation structure
+
+### **Testing**
+- Each subsystem has its own test suite
+- Shared testing utilities in `shared/testing/`
+- Main test runner can execute all subsystem tests
+
+## 🎯 Integration Examples
+
+### **Main System Integration**
+```python
+# In main-building-interface.md
+AVAILABLE_AUTOMATIONS = {
+    "interview_analysis": {
+        "path": "automation-systems/interview-analysis/",
+        "entry_point": "src/main.py",
+        "description": "AI-powered interview transcript analysis",
+        "quick_start": "quick_start.py"
+    },
+    "data_processing": {
+        "path": "automation-systems/data-processing/",
+        "entry_point": "src/main.py", 
+        "description": "Advanced data processing workflows",
+        "quick_start": "quick_start.py"
+    }
+}
+```
+
+### **User Interface Integration**
+```python
+# User can discover and launch subsystems
+def list_available_systems():
+    return {name: info for name, info in AVAILABLE_AUTOMATIONS.items()}
+
+def launch_system(system_name, *args):
+    system_info = AVAILABLE_AUTOMATIONS[system_name]
+    return execute_subsystem(system_info['path'], *args)
+```
+
+## 🚀 Migration Guidelines
+
+### **Moving Existing Systems**
+1. Create appropriate subsystem directory
+2. Move all related files into structure
+3. Update imports and paths
+4. Add proper documentation
+5. Create quick_start.py for easy access
+
+### **Maintaining Compatibility**
+- Old interfaces should redirect to new structure
+- Gradual migration without breaking existing functionality
+- Clear deprecation notices for old patterns
+
+## 📊 Benefits of This Organization
+
+### **For Users**
+- ✅ Clear system discovery
+- ✅ Independent installation/testing
+- ✅ Consistent user experience
+- ✅ Easy system comparison
+
+### **For Development**
+- ✅ Isolated development environments
+- ✅ Clear separation of concerns
+- ✅ Easier testing and debugging
+- ✅ Scalable architecture
+
+### **For Maintenance**
+- ✅ Independent versioning
+- ✅ Easier updates and fixes
+- ✅ Clear ownership of components
+- ✅ Simplified dependency management
+
+This structure ensures the main project remains clean while providing a scalable foundation for multiple automation systems.

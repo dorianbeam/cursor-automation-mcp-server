@@ -1,0 +1,59 @@
+{
+  "user_id": null,
+  "setup_completed": false,
+  "created_at": null,
+  "last_updated": null,
+  
+  "primary_mode": null,
+  "experience_level": null,
+  
+  "learning_preferences": {
+    "enabled": null,
+    "explain_enhancements": true,
+    "teach_concepts": true,
+    "show_alternatives": false,
+    "minimal_explanations": false,
+    "concept_depth": "STANDARD"
+  },
+  
+  "building_style": {
+    "approach": null,
+    "enhancement_approval": "ASK_MAJOR",
+    "progress_visibility": "DETAILED",
+    "building_pace": "STANDARD"
+  },
+  
+  "communication": {
+    "show_progress": true,
+    "time_estimates": true,
+    "explain_decisions": true,
+    "context_sharing": true,
+    "technical_detail_level": "INTERMEDIATE"
+  },
+  
+  "domain_expertise": {
+    "data_processing": "UNKNOWN",
+    "api_integration": "UNKNOWN",
+    "web_automation": "UNKNOWN", 
+    "file_management": "UNKNOWN",
+    "database_operations": "UNKNOWN",
+    "system_integration": "UNKNOWN"
+  },
+  
+  "successful_patterns": [],
+  
+  "preferences_learned": {
+    "favorite_architectures": [],
+    "preferred_error_handling": null,
+    "performance_priorities": [],
+    "code_style_preferences": []
+  },
+  
+  "session_stats": {
+    "total_sessions": 0,
+    "total_systems_built": 0,
+    "preferred_session_length": null,
+    "most_used_mode": null,
+    "learning_engagement_score": 0
+  }
+}

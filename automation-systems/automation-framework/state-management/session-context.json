@@ -1,0 +1,43 @@
+{
+  "session_id": null,
+  "started_at": null,
+  "current_project": null,
+  "working_mode": null,
+  
+  "workspace_context": {
+    "working_directory": null,
+    "relevant_files": [],
+    "detected_patterns": [],
+    "potential_integrations": []
+  },
+  
+  "user_intent": {
+    "primary_goal": null,
+    "domain": null,
+    "complexity_level": null,
+    "time_constraints": null
+  },
+  
+  "system_state": {
+    "current_step": null,
+    "completed_steps": [],
+    "pending_steps": [],
+    "enhancements_suggested": [],
+    "enhancements_approved": [],
+    "enhancements_rejected": []
+  },
+  
+  "interaction_context": {
+    "conversation_flow": [],
+    "user_feedback": [],
+    "clarification_requests": [],
+    "system_adaptations": []
+  },
+  
+  "progress": {
+    "percentage_complete": 0,
+    "estimated_time_remaining": null,
+    "current_status": "IDLE",
+    "next_action": null
+  }
+}

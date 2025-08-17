@@ -1,0 +1,12 @@
+{
+  "processing_options": {
+    "validate_emails": true,
+    "salary_analysis": true,
+    "department_grouping": true
+  },
+  "output_formats": [
+    "csv",
+    "json",
+    "html_report"
+  ]
+}

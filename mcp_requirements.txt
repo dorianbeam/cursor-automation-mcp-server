@@ -1,0 +1,40 @@
+# MCP Server Requirements
+# Core MCP and FastMCP dependencies
+fastmcp>=0.1.0
+pydantic>=2.0.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+asyncio-mqtt>=0.13.0
+
+# Data processing and analysis
+pandas>=1.5.0
+numpy>=1.20.0
+pathlib2>=2.3.0
+
+# File handling and utilities
+openpyxl>=3.0.0
+python-multipart>=0.0.5
+
+# Web automation (optional, for web_automator template)
+selenium>=4.0.0
+beautifulsoup4>=4.9.0
+requests>=2.25.0
+
+# API integration (optional, for api_integrator template) 
+httpx>=0.24.0
+tenacity>=8.0.0
+
+# Document processing (optional, for document_processor template)
+PyPDF2>=2.10.0
+python-docx>=0.8.11
+
+# Visualization and reporting (optional)
+matplotlib>=3.5.0
+plotly>=5.0.0
+
+# Scheduling and workflow (optional)
+schedule>=1.1.0
+croniter>=1.0.0
+
+# Logging and monitoring
+structlog>=22.0.0
